@@ -14,8 +14,8 @@ public class StudentService {
     private final StudentMapper studentMapper;
 
     public StudentDTO save(StudentDTO student) {
-        student.setIsActive(Boolean.TRUE);
         Student entity = studentMapper.toEntity(student);
+        entity.setIsActive(Boolean.TRUE);
         return studentMapper.toDTO(studentRepository.save(entity));
     }
 }
