@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: DML/001_insert_student.sql
+      relativeToChangelogFile: true
