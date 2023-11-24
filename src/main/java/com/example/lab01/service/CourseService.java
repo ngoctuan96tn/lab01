@@ -7,6 +7,8 @@ import com.example.lab01.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CourseService {
@@ -17,5 +19,10 @@ public class CourseService {
         Course entity = courseMapper.toEntity(course);
         entity.setIsActive(Boolean.TRUE);
         return courseMapper.toDTO(courseRepository.save(entity));
+    }
+
+    public List<CourseDTO> getAll() {
+        return courseMapper.toDTO(courseRepository.findByIsActive(Boolean.TRUE));
+
     }
 }

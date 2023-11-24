@@ -1,16 +1,15 @@
 package com.example.lab01.controller;
 
+import com.example.lab01.dto.CourseDTO;
 import com.example.lab01.dto.CourseRegistryDTO;
 import com.example.lab01.dto.StudentDTO;
 import com.example.lab01.exception.BussinessException;
 import com.example.lab01.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -19,11 +18,18 @@ import java.util.Objects;
 public class StudentController {
 
     private final StudentService studentService;
+
     @PostMapping("/create")
     public ResponseEntity<StudentDTO> create(@RequestBody StudentDTO student) {
         StudentDTO result = studentService.save(student);
         return ResponseEntity.ok(result);
 
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<StudentDTO>> getAll() {
+        List<StudentDTO> result = studentService.getAll();
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/registry-course")

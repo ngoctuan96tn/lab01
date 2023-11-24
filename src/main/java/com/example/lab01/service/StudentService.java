@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -27,6 +28,10 @@ public class StudentService {
         Student entity = studentMapper.toEntity(student);
         entity.setIsActive(Boolean.TRUE);
         return studentMapper.toDTO(studentRepository.save(entity));
+    }
+
+    public List<StudentDTO> getAll() {
+        return studentMapper.toDTO(studentRepository.findByIsActive(Boolean.TRUE));
     }
 
     public CourseRegistryDTO registryCourse(CourseRegistryDTO dto) throws BussinessException {

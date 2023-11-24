@@ -4,10 +4,9 @@ import com.example.lab01.dto.CourseDTO;
 import com.example.lab01.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/course")
@@ -18,6 +17,13 @@ public class CourseController {
     @PostMapping("/create")
     public ResponseEntity<CourseDTO> create(@RequestBody CourseDTO course) {
         CourseDTO result = courseService.save(course);
+        return ResponseEntity.ok(result);
+
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<CourseDTO>> getAll() {
+        List<CourseDTO> result = courseService.getAll();
         return ResponseEntity.ok(result);
 
     }
