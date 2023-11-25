@@ -1,0 +1,1 @@
+insert into student values (1,'Ha Noi','1996-04-12',1,1,'Tuan'), (2,'Ha Noi','2021-01-01',0,1,'Thi Cam');

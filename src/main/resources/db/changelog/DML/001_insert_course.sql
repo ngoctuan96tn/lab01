@@ -1,0 +1,1 @@
+insert into course values (1,1,'Angular',30),(2,1,'Java',50);
